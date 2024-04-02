@@ -6,6 +6,10 @@
 
 This project is on building a full-stack e-commerce website using the MERN stack (MongoDB, Express, React, Node.js). Frontend and backend development, including React functionalities, state management, routing, backend server setup, MongoDB database integration, and user authentication.
 
+## Live Demo
+
+Check out the live demo of the project: [E-Commerce Website](https://ecommerce-lu5n1fvp5-pratiktechies-projects.vercel.app/)
+
 ![Screenshot of E-Commerce Website](./screenshot.png)
 
 ## Features
