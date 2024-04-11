@@ -22,7 +22,6 @@ const LoginSignup = () => {
         Accept: "application",
         "Content-Type": "application/json",
       },
-      credentials: true,
       body: JSON.stringify(formData)
     })
       .then((response) => response.json())

@@ -1,6 +1,6 @@
 const port = process.env.PORT || 4000 ;
 const express = require("express");
-export const app = express();
+const app = express();
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken")
 // const multer = require("multer");
@@ -267,3 +267,5 @@ app.listen(port, (error)=>{
         console.log("Error : "+error)
     }
 })
+
+module.exports = app
