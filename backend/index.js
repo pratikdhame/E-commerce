@@ -1,6 +1,6 @@
 const port = 4000;
 const express = require("express");
-const app = express();
+export const app = express();
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken")
 const multer = require("multer");
@@ -10,7 +10,7 @@ const { type } = require("os");
 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://e-commerce-taupe-three.vercel.app'
+    origin: ['https://e-commerce-taupe-three.vercel.app']
 }));
 
 // Database Connection With Mongo
