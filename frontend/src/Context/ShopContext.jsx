@@ -13,7 +13,7 @@ const ShopContextProvider = (props) =>{
 
 
     const [all_product, setAll_Product] = useState([]);
-    const [cartItems, setCartItems] = useState(getDefaultCart());
+    const [cartItems, setCartItems] = useState(getDefaultCart());``
 
     useEffect(()=>{
         fetch('https://e-commerce-8hau.vercel.app/allproducts')
