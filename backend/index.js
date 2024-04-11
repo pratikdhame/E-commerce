@@ -9,7 +9,9 @@ const cors = require("cors");
 const { type } = require("os");
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'https://e-commerce-taupe-three.vercel.app'
+}));
 
 // Database Connection With Mongo
 mongoose.connect("mongodb+srv://pratikdhamepawar:Sshs5to10%40yb@cluster0.yq2oi1i.mongodb.net/e-commerce")
