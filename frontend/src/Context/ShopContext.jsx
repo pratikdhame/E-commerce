@@ -16,12 +16,12 @@ const ShopContextProvider = (props) =>{
     const [cartItems, setCartItems] = useState(getDefaultCart());
 
     useEffect(()=>{
-        fetch('https://e-commerce-drq2.vercel.app/allproducts')
+        fetch('https://e-commerce-8hau.vercel.app/allproducts')
         .then((response)=>response.json())
         .then((data)=>setAll_Product(data))
 
         if(localStorage.getItem('auth-token')){
-            fetch('https://e-commerce-drq2.vercel.app/getcart',{
+            fetch('https://e-commerce-8hau.vercel.app/getcart',{
                 method: 'POST',
                 headers:{
                     Accept: 'application/form-data',
@@ -37,7 +37,7 @@ const ShopContextProvider = (props) =>{
     const addToCart = (itemId) =>{
         setCartItems((prev)=>({...prev, [itemId]: prev[itemId]+1}));
         if(localStorage.getItem('auth-token')){
-            fetch('https://e-commerce-drq2.vercel.app/addtocart',{
+            fetch('https://e-commerce-8hau.vercel.app/addtocart',{
                 method:'POST',
                 headers:{
                     Accept: 'application/form-data',
@@ -54,7 +54,7 @@ const ShopContextProvider = (props) =>{
     const removeFromCart = (itemId) =>{
         setCartItems((prev)=>({...prev, [itemId]: prev[itemId]-1}))
         if(localStorage.getItem('auth-token')){
-            fetch('https://e-commerce-drq2.vercel.app/removefromcart',{
+            fetch('https://e-commerce-8hau.vercel.app/removefromcart',{
                 method:'POST',
                 headers:{
                     Accept: 'application/form-data',

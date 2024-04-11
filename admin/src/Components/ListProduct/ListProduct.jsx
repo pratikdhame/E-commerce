@@ -7,7 +7,7 @@ const ListProduct = () => {
   const [allproducts, setAllProducts] = useState([]);
   
   const fetchInfo = async ()=>{
-    await fetch('https://e-commerce-drq2.vercel.app/allproducts')
+    await fetch('https://e-commerce-8hau.vercel.app/allproducts')
     .then((res)=>res.json())
     .then((data)=>{setAllProducts(data)});
   }
@@ -17,7 +17,7 @@ const ListProduct = () => {
   },[])
 
   const remove_product = async (id)=>{
-    await fetch('https://e-commerce-drq2.vercel.app/removeproduct',{
+    await fetch('https://e-commerce-8hau.vercel.app/removeproduct',{
       method: 'POST',
       headers:{
         Accept:'Application',

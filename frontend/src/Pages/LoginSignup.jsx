@@ -16,7 +16,7 @@ const LoginSignup = () => {
   const login = async () => {
     console.log("Login Function Executed", formData);
     let responseData;
-    await fetch("https://e-commerce-drq2.vercel.app/login", {
+    await fetch("https://e-commerce-8hau.vercel.app/login", {
       method: "POST",
       headers: {
         Accept: "application",
@@ -38,7 +38,7 @@ const LoginSignup = () => {
   const signup = async () => {
     console.log("Sign Up Function Executed", formData);
     let responseData;
-    await fetch("https://e-commerce-drq2.vercel.app/signup", {
+    await fetch("https://e-commerce-8hau.vercel.app/signup", {
       method: "POST",
       headers: {
         Accept: "application",
