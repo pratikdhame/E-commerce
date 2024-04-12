@@ -260,25 +260,12 @@ app.post('/getcart',fetchUser, async(req, res)=>{
     res.json(userData.cartData);
 })
 
-// app.listen(port, (error)=>{
-//     if(!error){
-//         console.log("Server Running on Port "+port) 
-//     }else{
-//         console.log("Error : "+error)
-//     }
-// })
-
-
-module.exports = async (req, res) => {
-    // Handle incoming requests here
-    // You can use express' app object to handle routes, or define routes directly here
-    
-    // Example:
-    if (req.method === 'GET') {
-        res.send("Hello from Express app running on Vercel!");
-    } else {
-        res.status(405).send({ error: 'Method not allowed' });
+app.listen(port, (error)=>{
+    if(!error){
+        console.log("Server Running on Port "+port) 
+    }else{
+        console.log("Error : "+error)
     }
-};
+})
 
 module.exports = app
