@@ -260,15 +260,14 @@ app.post('/getcart',fetchUser, async(req, res)=>{
     res.json(userData.cartData);
 })
 
-app.listen(port, (error)=>{
-    if(!error){
-        console.log("Server Running on Port "+port) 
-    }else{
-        console.log("Error : "+error)
-    }
-})
+// app.listen(port, (error)=>{
+//     if(!error){
+//         console.log("Server Running on Port "+port) 
+//     }else{
+//         console.log("Error : "+error)
+//     }
+// })
 
-// module.exports = app
 
 module.exports = async (req, res) => {
     // Handle incoming requests here
@@ -281,3 +280,5 @@ module.exports = async (req, res) => {
         res.status(405).send({ error: 'Method not allowed' });
     }
 };
+
+module.exports = app
