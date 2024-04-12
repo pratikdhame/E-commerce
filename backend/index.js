@@ -268,4 +268,16 @@ app.listen(port, (error)=>{
     }
 })
 
-module.exports = app
+// module.exports = app
+
+module.exports = async (req, res) => {
+    // Handle incoming requests here
+    // You can use express' app object to handle routes, or define routes directly here
+    
+    // Example:
+    if (req.method === 'GET') {
+        res.send("Hello from Express app running on Vercel!");
+    } else {
+        res.status(405).send({ error: 'Method not allowed' });
+    }
+};
