@@ -31,8 +31,9 @@ cloudinary.config({
   api_secret: 'odn89uNwykCVq0_y122K430M_C8' 
 });
 
-// Upload endpoint using Cloudinary
+
 app.post('/upload', async (req, res) => {
+    console.log("fgdfgdgf");
     try {
         const result = await cloudinary.uploader.upload(req.file.path);
         res.json({
@@ -40,7 +41,7 @@ app.post('/upload', async (req, res) => {
             image_url: result.secure_url
         });
     } catch (error) {
-        console.error('Error uploading image to Cloudinary:', error);
+        console.log('Error uploading image to Cloudinary:', error);
         res.status(500).json({ success: 0, message: 'Failed to upload image' });
     }
 });
