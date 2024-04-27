@@ -3,10 +3,10 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken")
-// const multer = require("multer");
-// const path = require("path");
+// const multer = require("multer"); // Commented out
+// const path = require("path"); // Commented out
 const cors = require("cors");
-// const { type } = require("os");
+// const { type } = require("os"); // Commented out
 const cloudinary = require('cloudinary').v2;
 
 app.use(express.json());
@@ -24,39 +24,15 @@ app.get("/",(req, res)=>{
     res.send("Express App is Running")
 })
 
-//
-
-//Image Storage Engine
-
-// const storage = multer.diskStorage({
-//     destination: './upload/images',
-//     filename:(req, file, cb) =>{
-//         return cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
-//     }
-// })
-
-// const upload = multer({storage: storage})
-
-//Creating Upload Endpoint for images
-// app.use('/images', express.static('upload/images'))
-
-// app.post("/upload",upload.single('product'), (req, res)=>{
-//     res.json({
-//         success: 1,
-//         image_url:`http://localhost:${port}/images/${req.file.filename}`
-//     })
-// })
-
-
-          
+// cloudinary configuration
 cloudinary.config({ 
   cloud_name: 'dpvaqrbzt', 
   api_key: '665615587324492', 
   api_secret: 'odn89uNwykCVq0_y122K430M_C8' 
 });
 
-
-app.post('/upload', upload.single('product'), async (req, res) => {
+// Upload endpoint using Cloudinary
+app.post('/upload', async (req, res) => {
     try {
         const result = await cloudinary.uploader.upload(req.file.path);
         res.json({
@@ -68,6 +44,7 @@ app.post('/upload', upload.single('product'), async (req, res) => {
         res.status(500).json({ success: 0, message: 'Failed to upload image' });
     }
 });
+
 
 // Schema for Creating Products
 
