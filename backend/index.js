@@ -3,10 +3,10 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken")
-const multer = require("multer");
-const path = require("path");
+// const multer = require("multer");
+// const path = require("path");
 const cors = require("cors");
-const { type } = require("os");
+// const { type } = require("os");
 const cloudinary = require('cloudinary').v2;
 
 app.use(express.json());
@@ -26,17 +26,17 @@ app.get("/",(req, res)=>{
 
 //Image Storage Engine
 
-const storage = multer.diskStorage({
-    destination: './upload/images',
-    filename:(req, file, cb) =>{
-        return cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
-    }
-})
+// const storage = multer.diskStorage({
+//     destination: './upload/images',
+//     filename:(req, file, cb) =>{
+//         return cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
+//     }
+// })
 
-const upload = multer({storage: storage})
+// const upload = multer({storage: storage})
 
 //Creating Upload Endpoint for images
-app.use('/images', express.static('upload/images'))
+// app.use('/images', express.static('upload/images'))
 
 // app.post("/upload",upload.single('product'), (req, res)=>{
 //     res.json({
@@ -59,7 +59,7 @@ app.post('/upload', upload.single('product'), async (req, res) => {
         const result = await cloudinary.uploader.upload(req.file.path);
         res.json({
             success: 1,
-            image_url: result.secure_url // URL of the uploaded image on Cloudinary
+            image_url: result.secure_url
         });
     } catch (error) {
         console.error('Error uploading image to Cloudinary:', error);
