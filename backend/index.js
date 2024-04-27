@@ -35,7 +35,8 @@ cloudinary.config({
 app.post('/upload', async (req, res) => {
     console.log("fgdfgdgf");
     try {
-        const result = await cloudinary.uploader.upload(req.file.path);
+        // const result = await cloudinary.uploader.upload(req.file.path);
+        const result = await cloudinary.uploader.upload("https://buffer.com/library/content/images/2023/10/free-images.jpg");
         res.json({
             success: 1,
             image_url: result.secure_url
