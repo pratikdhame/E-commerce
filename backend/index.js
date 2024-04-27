@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken")
 // const path = require("path");
 const cors = require("cors");
 // const { type } = require("os");
+const cloudinary = require('cloudinary').v2;
 
 app.use(express.json());
 app.use(cors({
