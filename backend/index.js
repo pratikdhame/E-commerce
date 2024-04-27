@@ -4,9 +4,9 @@ const app = express();
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken")
 // const multer = require("multer"); // Commented out
-// const path = require("path"); // Commented out
+const path = require("path"); // Commented out
 const cors = require("cors");
-// const { type } = require("os"); // Commented out
+const { type } = require("os"); // Commented out
 const cloudinary = require('cloudinary').v2;
 
 app.use(express.json());
