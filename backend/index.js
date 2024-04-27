@@ -12,7 +12,7 @@ const cloudinary = require('cloudinary').v2;
 app.use(express.json());
 app.use(cors({
     credentials: true,
-    origin: ['https://e-commerce-taupe-three.vercel.app']
+    origin: ['https://e-commerce-taupe-three.vercel.app','https://e-commerce-nrb1.vercel.app']
 }));
 app.use(express.json())
 
