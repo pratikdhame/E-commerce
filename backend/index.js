@@ -2,8 +2,9 @@ const port = process.env.PORT || 4000 ;
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken")
-// const multer = require("multer"); // Commented out
+const jwt = require("jsonwebtoken");
+const axios = require('axios');
+const multer = require("multer"); // Commented out
 const path = require("path"); // Commented out
 const cors = require("cors");
 const { type } = require("os"); // Commented out
@@ -24,29 +25,41 @@ app.get("/",(req, res)=>{
     res.send("Express App is Running")
 })
 
-// cloudinary configuration
-cloudinary.config({ 
-  cloud_name: 'dpvaqrbzt', 
-  api_key: '665615587324492', 
-  api_secret: 'odn89uNwykCVq0_y122K430M_C8' 
-});
+const upload = multer({ storage: multer.memoryStorage() });
 
+const IMGUR_CLIENT_ID = '3cc35945b2a1646';  // Replace with your Imgur Client ID
 
-app.post('/upload', async (req, res) => {
-    console.log("fgdfgdgf");
-    try {
-        // const result = await cloudinary.uploader.upload(req.file.path);
-        const result = await cloudinary.uploader.upload("https://buffer.com/library/content/images/2023/10/free-images.jpg");
-        res.json({
-            success: 1,
-            image_url: result.secure_url
-        });
-    } catch (error) {
-        console.log('Error uploading image to Cloudinary:', error);
-        res.status(500).json({ success: 0, message: 'Failed to upload image' });
+// Endpoint to upload an image to Imgur
+app.post("/upload", upload.single('product'), async (req, res) => {
+  try {
+    // Check if the file is uploaded
+    if (!req.file) {
+      return res.status(400).json({ success: 0, error: "No file uploaded" });
     }
-});
 
+    // Upload the image to Imgur
+    const imgurResponse = await axios({
+      method: 'post',
+      url: 'https://api.imgur.com/3/image',
+      headers: {
+        Authorization: `Client-ID ${IMGUR_CLIENT_ID}`,  // Provide your Client ID
+      },
+      data: {
+        image: req.file.buffer.toString('base64'),  // Convert image to Base64
+        type: 'base64',
+      },
+    });
+
+    // Respond with the Imgur image URL
+    res.json({
+      success: 1,
+      image_url: imgurResponse.data.data.link,  // Get the URL from the response
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: 0, error: "Image upload failed" });
+  }
+});
 
 // Schema for Creating Products
 
